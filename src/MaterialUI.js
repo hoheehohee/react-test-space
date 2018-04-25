@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { AppBar, TextField, GridList, GridTile } from 'material-ui';
-import { LeftPane, RightPane } from './components';
-import { SampleProvider } from './contexts/Sample';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { TextField } from 'material-ui';
+import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
+import Subheader from 'material-ui/List/ListSubheader';
+import { LeftPane, RightPane, AppBar } from './components';
+// import { SampleProvider } from './contexts/Sample';
+import { SampleHoCProvider } from './contexts/SampleHOC';
 
 class MaterialUI extends Component {
+
   render() {
+
+    const theme = createMuiTheme();
+
     return (
-      <SampleProvider>
-        <MuiThemeProvider>
-          <div>
-            <AppBar
-              title="Title"
-              iconClassNameRight="muidocs-icon-navigation-expand-more"
-            />
-            <StyledMain>
-              <TextField name="text filed" hintText="Hint Text"/>
-              <GridList className="panes">
-                <GridTile>
-                  <LeftPane />
-                </GridTile>
-                <GridTile>
-                  <RightPane />
-                </GridTile>
-              </GridList>
-            </StyledMain>
-          </div>
+      //<SampleProvider>
+      <SampleHoCProvider>
+        <MuiThemeProvider theme={theme}>
+          <AppBar classes={{ root: 'AppBar', menuButton: "MU_button"}}/>
+          <StyledMain>
+            <GridList cols={4}>
+              <GridListTile>
+                <LeftPane />
+              </GridListTile>
+              <GridListTile>
+                <RightPane />
+              </GridListTile>
+            </GridList>
+          </StyledMain>
         </MuiThemeProvider>
-      </SampleProvider>
+      </SampleHoCProvider>
+      //</SampleProvider>
     );
   }
 }
@@ -39,7 +42,7 @@ const StyledAppBar = styled(TextField)`
 `
 
 const StyledMain = styled.div`
-  margin: 10px 20px;
+  margin: 30px 30px;
 `
 
 export default MaterialUI;

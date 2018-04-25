@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import { TextField, RaisedButton } from 'material-ui';
+import styled from 'styled-components';
+import { Button, TextField } from 'material-ui';
 import { SampleConsumer } from '../../contexts/Sample';
+import { useSample } from '../../contexts/SampleHOC';
+
+const BtnTest = styled(Button)`
+	&& {
+		color: red;
+	}
+`
 
 class Sends extends Component {
 
@@ -26,8 +34,14 @@ class Sends extends Component {
 	render() {
 		return(
 			<form onSubmit={this.handleSubmit}>
-				<TextField name="input" value={this.state.input} onChange={this.handleChange} />
-				<RaisedButton type="submit" label="Default" style={{margin: 12}} />
+				<TextField
+					label="Test Input"
+					name="input"
+					value={this.state.input}
+					onChange={this.handleChange}
+					margin="normal"
+				/>
+				<Button type="submit" variant="raised"  color="primary" style={{margin: 12}} >Default</Button>
 			</form>
 		);
 	}
@@ -46,4 +60,5 @@ const SendsContainer = () => (
 	</SampleConsumer>
 );
 
-export default SendsContainer;
+// export default SendsContainer;
+export default useSample(Sends);
