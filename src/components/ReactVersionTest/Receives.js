@@ -23,7 +23,7 @@ const Receives = () => {
 }
 */
 
-const Receives = ({ value }) => {
+const Receives = ({ value, number }) => {
 	return (
 		<FormControl disabled style={{width: 200}}>
 			<InputLabel htmlFor="name-disabled">현재 설정된 값: </InputLabel>

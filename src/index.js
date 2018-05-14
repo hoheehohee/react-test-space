@@ -5,7 +5,8 @@ import './index.css';
 import App from './App';
 import FormsyReact from './FormsyReact';
 import MaterialUI from './MaterialUI';
+import ReactInfinite from './ReactInfinite';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<MaterialUI />, document.getElementById('root'));
+ReactDOM.render(<ReactInfinite />, document.getElementById('root'));
 registerServiceWorker();
