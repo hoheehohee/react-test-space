@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Infinite from 'react-infinite';
+import styled from 'styled-components';
 import ListItem from './components/ReactInfinite/ListItem';
+import './App.css';
 
 const propTypes = {
 };
@@ -14,7 +16,8 @@ class ReactInfinite extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			elements: null
+			elements: null,
+			isInfiniteLoading: false
 		}
 	}
 
@@ -33,7 +36,6 @@ class ReactInfinite extends Component {
 	buildElements = (start, end) => {
 		var elements = [];
 		for (var i = start; i < end; i++) {
-			console.log('###### i : ', i);
 	 		elements.push(<ListItem key={i} keyItem={i}/>)
 		}
 		return elements;
@@ -45,12 +47,12 @@ class ReactInfinite extends Component {
         isInfiniteLoading: true
     });
     setTimeout(function() {
-        var elemLength = that.state.elements.length,
-            newElements = that.buildElements(elemLength, elemLength + 1000);
-        that.setState({
-            isInfiniteLoading: false,
-            elements: that.state.elements.concat(newElements)
-        });
+    	var elemLength = that.state.elements.length,
+          newElements = that.buildElements(elemLength, elemLength + 1000);
+      that.setState({
+          isInfiniteLoading: false,
+          elements: that.state.elements.concat(newElements)
+      });
     }, 2500);
   };
 
@@ -67,19 +69,27 @@ class ReactInfinite extends Component {
 		console.log('###### elements : ', elements);
 
 		return(
-			<Infinite
-				elementHeight={40}
-				containerHeight={250}
-				infiniteLoadingBeginBottomOffset={200}
-				onInfiniteLoad={this.handleInfiniteLoad}
-				loadingSpinnerDelegate={this.elementInfiniteLoad()}
-				isInfiniteLoading={this.state.isInfiniteLoading}
-       >
-        {elements}
-      </Infinite>
+			<DomDiv>
+				<Infinite
+					elementHeight={40}
+					containerHeight={250}
+					infiniteLoadBeginEdgeOffset={200}
+					onInfiniteLoad={this.handleInfiniteLoad}
+					loadingSpinnerDelegate={this.elementInfiniteLoad()}
+					isInfiniteLoading={this.state.isInfiniteLoading}
+	       >
+	        {elements}
+	      </Infinite>
+			</DomDiv>
 		);
 	}
 }
+
+const DomDiv = styled.div`
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-bottom: 20px;
+`
 
 ReactInfinite.propTypes = propTypes;
 ReactInfinite.defaultProps = defaultProps;
