@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "eslint-config-brigade": "^7.0.0",
+    "eslint-config-vendys": "^1.0.1",
     "formsy-react": "^1.1.4",
     "formsy-react-components": "^1.0.0",
     "material-components-web": "^0.35.0",

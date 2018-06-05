@@ -42,6 +42,7 @@ class ReactInfinite extends Component {
 	};
 
 	handleInfiniteLoad = () => {
+		console.log('###### handleInfiniteLoad : ');
     var that = this;
     this.setState({
         isInfiniteLoading: true
