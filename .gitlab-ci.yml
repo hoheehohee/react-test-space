@@ -5,6 +5,7 @@
 #   DOKCER_IMAGE_URL: registry.gitlab.com/hoheehohee/react-test-space
 
 # services:
+# gitlab ci setting
 #   - docker:dind
 
 # before_script:
