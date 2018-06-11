@@ -1,3 +1,5 @@
+#nginx setting
+
 gitlab ci setting
 image: docker:latest
 
