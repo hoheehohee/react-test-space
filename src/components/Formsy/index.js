@@ -1,5 +1,3 @@
 import MyInput from './MyInput';
 
-export {
-	MyInput
-}
+export default MyInput;

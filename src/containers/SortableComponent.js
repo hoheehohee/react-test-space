@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
+import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import { SortableItem } from '../containers';
 
-const SortableList = SortableContainer(({items, itemsChange}) => {
-  return (
-    <ItemList>
-      {items.map((value, index) => {
-        return(<SortableItem key={`item-${index}`} index={index} value={value} itemsChange={itemsChange}/>)
-      })}
-    </ItemList>
-  );
-});
+const SortableList = SortableContainer(({ items, itemsChange }) => (
+  <ItemList>
+    {
+      items.map((value, index) => (
+        <SortableItem key={`item-${index}`} index={index} value={value} itemsChange={itemsChange} />)
+      )
+    }
+  </ItemList>
+));
 
 class SortableComponent extends Component {
-
   state = {
     items: this.props.items
   }
@@ -24,15 +23,12 @@ class SortableComponent extends Component {
     console.log('###### componentWillUnmount : ');
   }
 
-  onSortEnd = ({oldIndex, newIndex}) => {
-
+  onSortEnd = ({ oldIndex, newIndex }) => {
     const { itemsChange } = this.props;
-    console.log('###### itemsChange : ', this.props);
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex),
+      items: arrayMove(this.state.items, oldIndex, newIndex)
     });
     itemsChange(this.state.items);
-
   };
 
   render() {
@@ -69,7 +65,7 @@ const ContentWrapper = styled.div`
         color: inherit;
     }
   }
-`
+`;
 const ItemList = styled.div`
   position: relative;
   z-index: 0;
@@ -83,6 +79,6 @@ const ItemList = styled.div`
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   border: 1px solid #999;
-`
+`;
 
 export default SortableComponent;

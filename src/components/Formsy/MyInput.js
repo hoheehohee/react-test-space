@@ -1,5 +1,5 @@
 import { withFormsy } from 'formsy-react';
-import { Form, FormControl, FormGroup, ControlLabel, HelpBlock, Button, ButtonToolbar } from "react-bootstrap";
+import { FormControl, FormGroup, ControlLabel, HelpBlock, Button, ButtonToolbar } from 'react-bootstrap';
 import React from 'react';
 
 class MyInput extends React.Component {
@@ -23,8 +23,8 @@ class MyInput extends React.Component {
     const showRequired = this.props.showRequired();
 
     return (
-      <div style={{width: '500px'}}>
-        <FormGroup validationState={ isValid ? 'success' : 'error' }>
+      <div style={{ width: '500px' }}>
+        <FormGroup validationState={isValid ? 'success' : 'error'}>
           <ControlLabel>Working example with validation</ControlLabel>
           <FormControl
             onChange={this.changeValue}
