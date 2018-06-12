@@ -24,8 +24,9 @@ build:
   image: node:7
   stage: build
   script:
-    - npm install --progress=false
-    - npm run build prod
+    - npm install --global yarn
+    - yarn install --progress=false
+    - yarn run build prod
   artifacts:
     expire_in: 1 week
     paths:
