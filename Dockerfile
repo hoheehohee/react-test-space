@@ -1,4 +1,4 @@
 FROM nginx
 COPY nginx/conf.d /etc/nginx/conf.d
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY dist /react-test-space
+COPY build /react-test-space
