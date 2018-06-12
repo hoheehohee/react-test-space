@@ -26,6 +26,7 @@ build:
   script:
     - npm install --global yarn
     - yarn install --progress=false
+    - process.env.CI = false
     - yarn run build prod
   artifacts:
     expire_in: 1 week
