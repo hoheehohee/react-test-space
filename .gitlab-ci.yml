@@ -45,6 +45,7 @@ deployToServer:
   - echo -e "$DEPLOY_KEY" > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n"'
+  - echo $sshInfo
   - ssh -o StrictHostKeyChecking=no $sshInfo 'sudo docker login -u gitlab-ci-token -p '$CI_BUILD_TOKEN' registry.gitlab.com'
   - ssh -o StrictHostKeyChecking=no $sshInfo 'sudo docker pull '$DOKCER_IMAGE_URL
   #- ssh -o StrictHostKeyChecking=no $sshInfo 'docker-compose up -d'
