@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import {
-  AppBar as muAppBar,
+  AppBar as MuAppBar,
   Toolbar,
   Typography,
   Button,
@@ -21,11 +21,10 @@ const styles = {
     marginRight: 20
   }
 };
-const AppBar = () => {
-  const { classes } = this.props;
+const AppBar = ({classes}) => {
   return (
     <div className={classes.root}>
-      <muAppBar position="static">
+      <MuAppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             {/* <MenuIcon /> */}
@@ -35,7 +34,7 @@ const AppBar = () => {
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
-      </muAppBar>
+      </MuAppBar>
     </div>
   );
 };

@@ -4,13 +4,9 @@ import styled from 'styled-components';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { TextField } from 'material-ui';
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Subheader from 'material-ui/List/ListSubheader';
-import { LeftPane, RightPane, Counter, AppBar, DaumMapForm } from './components';
-// import { SampleProvider } from './contexts/Sample';
-import { SampleHoCProvider } from './contexts/SampleHOC';
-import { AnotherProvider } from './contexts/Another';
-import axios from 'axios';
-// import config from 'config';
+import { LeftPane, RightPane, Counter, AppBar, DaumMapForm } from '../components';
+import { SampleHoCProvider } from '../contexts/SampleHOC';
+import { AnotherProvider } from '../contexts/Another';
 
 const AppProvider = ({ contexts, children }) => contexts.reduce(
   (prev, context) => React.createElement( context, {
@@ -48,7 +44,7 @@ class MaterialUI extends Component {
         contexts={[SampleHoCProvider, AnotherProvider]}
       >
         <MuiThemeProvider theme={theme}>
-          <AppBar classes={{ root: 'AppBar', menuButton: "MU_button"}}/>
+          <AppBar classes={{ root: 'AppBar', menuButton: "MU_button" }}/>
           <StyledMain>
             <GridList cols={3}>
               <GridListTile>
@@ -72,10 +68,12 @@ class MaterialUI extends Component {
 
 const StyledAppBar = styled(TextField)`
   border: 1px solid #000000
-`
+`;
 
 const StyledMain = styled.div`
   margin: 30px 30px;
-`
+`;
 
 export default MaterialUI;
+
+

@@ -4,6 +4,8 @@ import RightPane from './ReactVersionTest/RightPane';
 import Counter from './ReactVersionTest/Counter';
 import AppBar from './Commons/AppBar';
 import DaumMapForm from './DaumMap/DaumMapForm';
+import SortableComponent from './Sortable/SortableComponent';
+import SortableItem from './Sortable/SortableItem';
 
 export {
 	MyInput,
@@ -11,5 +13,7 @@ export {
 	RightPane,
 	Counter,
 	AppBar,
-	DaumMapForm
+	DaumMapForm,
+	SortableComponent,
+	SortableItem
 }
