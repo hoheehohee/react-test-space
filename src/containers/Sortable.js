@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
-import { SortableComponent } from './containers';
+import { SortableComponent } from './components';
 
 
 class Sortable extends Component {

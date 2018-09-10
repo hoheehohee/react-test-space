@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
-import { SortableItem } from '../containers';
+import SortableItem from './SortableItem';
 
 const SortableList = SortableContainer(({ items, itemsChange }) => (
   <ItemList>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { SortableElement, arrayMove } from 'react-sortable-hoc';
 import styled from 'styled-components';
-
-import { SortableComponent } from '../containers';
+import SortableComponent from './SortableComponent';
 
 const SortableItem = SortableElement(({value, items, itemsChange}) => {
 
