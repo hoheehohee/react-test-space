@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, TextField } from 'material-ui';
-import GridList, { GridListTile } from 'material-ui/GridList';
+import { Button, TextField, GridListTile, GridList } from '@material-ui/core';
 
 class MapForm extends Component {
     state = {

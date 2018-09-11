@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import { TextField } from 'material-ui';
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
+import { 
+  MuiThemeProvider, 
+  createMuiTheme,
+  GridList,
+  GridListTile, 
+  TextField } from '@material-ui/core';
 import { LeftPane, RightPane, Counter, AppBar, DaumMapForm } from '../components';
 import { SampleHoCProvider } from '../contexts/SampleHOC';
 import { AnotherProvider } from '../contexts/Another';

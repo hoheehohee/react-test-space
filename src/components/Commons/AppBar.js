@@ -1,13 +1,12 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
 import {
+  withStyles,
   AppBar as MuAppBar,
   Toolbar,
   Typography,
   Button,
   IconButton
-} from 'material-ui';
-// import MenuIcon from 'material-ui/icons/Menu';
+} from '@material-ui/core';
 
 const styles = {
   root: {

@@ -1,6 +1,6 @@
 import Formsy from 'formsy-react';
 import React from 'react';
-import { MyInput } from 'components';
+import { MyInput } from '../components';
 
 export default class FormsyReact extends React.Component {
   constructor(props) {

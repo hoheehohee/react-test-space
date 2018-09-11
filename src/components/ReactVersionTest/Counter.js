@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAnother } from '../../contexts/Another';
-import { Button } from 'material-ui';
+import { Button } from '@material-ui/core';
 
 const Counter = ({ number, incrment }) => (
 	<div>

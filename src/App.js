@@ -15,6 +15,9 @@ class App extends Component {
         <div>
           <Route exact path='/' component={Main} />
           <Route path='/FormsyReact' component={FormsyReact} />
+          <Route path='/MaterialUI' component={MaterialUI} />
+          <Route path='/ReactInfinite' component={ReactInfinite} />
+          <Route path='/JSON' component={Main} />
         </div>
       </Router>
     );

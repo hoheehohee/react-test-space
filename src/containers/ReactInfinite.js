@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Infinite from 'react-infinite';
 import styled from 'styled-components';
-import ListItem from 'components/ReactInfinite/ListItem';
+import ListItem from '../components/ReactInfinite/ListItem';
 
 const propTypes = {
 };

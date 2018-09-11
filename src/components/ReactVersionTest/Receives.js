@@ -1,9 +1,11 @@
 import React from 'react';
 // import { SampleConsumer } from '../../contexts/Sample';
 import { useSample } from '../../contexts/SampleHOC';
-
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
+import { 
+	Input,
+	InputLabel,
+	FormControl,
+	FormHelperText } from '@material-ui/core';
 
 /*
 const Receives = () => {

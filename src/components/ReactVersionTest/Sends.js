@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Button, TextField } from 'material-ui';
+import { Button, TextField } from '@material-ui/core';
 import { SampleConsumer } from '../../contexts/Sample';
 import { useSample } from '../../contexts/SampleHOC';
 

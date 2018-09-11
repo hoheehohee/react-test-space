@@ -63,7 +63,6 @@ module.exports = {
           /\.json$/,
           /\.bmp$/,
           /\.gif$/,
-          /\.svg$/,
           /\.jpe?g$/,
           /\.png$/
         ],
