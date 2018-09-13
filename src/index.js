@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-// import FormsyReact from './containers/FormsyReact';
-// import MaterialUI from './MaterialUI';
-// import ReactInfinite from './ReactInfinite';
+import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './App';
+ReactDOM.render(
+  <Provider>
+    <App />
+  </Provider>, 
+  document.getElementById('root')
+);
 registerServiceWorker();
