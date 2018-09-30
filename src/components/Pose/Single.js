@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import posed, { PoseGroup } from 'react-pose';
-import './styles.css';
+// import './styles.css';
 
 const Modal = posed.div({
   enter: {
