@@ -5,7 +5,8 @@ import {
   Main,
   FormsyReact,
   MaterialUI,
-  ReactInfinite } from './containers';
+  ReactInfinite,
+  Pose } from './containers';
 class App extends Component {
 
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path='/MaterialUI' component={MaterialUI} />
           <Route path='/ReactInfinite' component={ReactInfinite} />
           <Route path='/JSON' component={Main} />
+          <Route path='/Pose' component={Pose} />
         </div>
       </Router>
     );
