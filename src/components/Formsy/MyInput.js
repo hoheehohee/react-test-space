@@ -20,7 +20,6 @@ class MyInput extends React.Component {
     // An error message is returned only if the component is invalid
     const errorMessage = this.props.getErrorMessage();
     const isValid = this.props.isValid();
-    const showRequired = this.props.showRequired();
 
     return (
       <div style={{ width: '500px' }}>

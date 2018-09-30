@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { Button, TextField } from '@material-ui/core';
-import { SampleConsumer } from '../../contexts/Sample';
 import { useSample } from '../../contexts/SampleHOC';
-
-const BtnTest = styled(Button)`
-	&& {
-		color: red;
-	}
-`
 
 class Sends extends Component {
 
@@ -57,19 +49,6 @@ class Sends extends Component {
 		);
 	}
 }
-
-const SendsContainer = () => (
-	<SampleConsumer>
-		{
-			({state, actions}) => (
-				<Sends
-					value={state.value}
-					setValue={actions.setValue}
-				/>
-			)
-		}
-	</SampleConsumer>
-);
 
 // export default SendsContainer;
 export default useSample(Sends);

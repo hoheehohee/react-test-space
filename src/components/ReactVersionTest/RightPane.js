@@ -1,6 +1,5 @@
 import React from 'react';
 import Receives from './Receives';
-import styled from 'styled-components';
 
 const RightPane = () => {
 	return (

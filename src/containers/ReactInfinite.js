@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Infinite from 'react-infinite';
 import styled from 'styled-components';
 import ListItem from '../components/ReactInfinite/ListItem';
-
-const propTypes = {
-};
-
-const defaultProps = {
-};
 
 class ReactInfinite extends Component {
 
@@ -90,8 +83,5 @@ const DomDiv = styled.div`
 	border-radius: 4px;
 	margin-bottom: 20px;
 `
-
-ReactInfinite.propTypes = propTypes;
-ReactInfinite.defaultProps = defaultProps;
 
 export default ReactInfinite;

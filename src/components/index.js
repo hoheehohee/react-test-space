@@ -8,7 +8,7 @@ import SortableComponent from './Sortable/SortableComponent';
 import SortableItem from './Sortable/SortableItem';
 
 export {
-	MyInput,
+  MyInput,
 	LeftPane,
 	RightPane,
 	Counter,

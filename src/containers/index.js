@@ -8,4 +8,4 @@ export {
   FormsyReact,
   MaterialUI,
   ReactInfinite
-}
+};
