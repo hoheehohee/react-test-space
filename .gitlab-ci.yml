@@ -21,12 +21,12 @@ stages:
   - deployToServer
 
 build:
-  image: node:8
+  image: node:10
   stage: build
   script:
     - npm install --global yarn
     - yarn install --progress=false
-    - yarn run build prod
+    - yarn run build
   artifacts:
     expire_in: 1 week
     paths:
