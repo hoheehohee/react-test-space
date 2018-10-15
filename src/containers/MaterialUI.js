@@ -5,8 +5,8 @@ import {
   MuiThemeProvider, 
   createMuiTheme,
   GridList,
-  GridListTile, 
-  TextField } from '@material-ui/core';
+  GridListTile
+ } from '@material-ui/core';
 import { LeftPane, RightPane, Counter, AppBar, DaumMapForm } from '../components';
 import { SampleHoCProvider } from '../contexts/SampleHOC';
 import { AnotherProvider } from '../contexts/Another';
@@ -19,13 +19,6 @@ const AppProvider = ({ contexts, children }) => contexts.reduce(
 )
 
 class MaterialUI extends Component {
-
-
-  componentDidMount() {
-    const params = {
-      autoload: false
-    }
-  }
 
   loadScript = (src) => {
     const tag = document.createElement('script');
@@ -68,10 +61,6 @@ class MaterialUI extends Component {
     );
   }
 }
-
-const StyledAppBar = styled(TextField)`
-  border: 1px solid #000000
-`;
 
 const StyledMain = styled.div`
   margin: 30px 30px;

@@ -9,7 +9,7 @@ import SortableItem from './Sortable/SortableItem';
 import Single from './Pose/Single';
 
 export {
-	MyInput,
+  MyInput,
 	LeftPane,
 	RightPane,
 	Counter,
