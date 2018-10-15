@@ -82,6 +82,15 @@ class Main extends Component {
                 </List>
               </Paper>
             </Link>
+            <Link to='/EmailSend'>
+              <Paper className={classes.paper}>
+                <List className={classes.list}>
+                  <ListItem className={classes.item} button>
+                    EmailSend
+                  </ListItem>
+                </List>
+              </Paper>
+            </Link>
           </Grid>
         </Grid>
       </div>

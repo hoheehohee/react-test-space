@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import './App.css';
+// import './App.css';
 import { 
   Main,
   FormsyReact,
   MaterialUI,
   ReactInfinite,
-  Pose } from './containers';
+  Pose,
+  EmailSendFom } from './containers';
 class App extends Component {
 
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path='/ReactInfinite' component={ReactInfinite} />
           <Route path='/JSON' component={Main} />
           <Route path='/Pose' component={Pose} />
+          <Route path='/EmailSend' component={EmailSendFom} />
         </div>
       </Router>
     );

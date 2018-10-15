@@ -66,8 +66,6 @@ class ReactInfinite extends Component {
 
 		const { elements } = this.state;
 
-		console.log('###### elements : ', elements);
-
 		return(
 			<DomDiv>
 				<Infinite
