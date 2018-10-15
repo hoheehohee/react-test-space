@@ -6,7 +6,7 @@ import {
   FormsyReact,
   MaterialUI,
   ReactInfinite,
-  Pose,
+  Map,
   EmailSendFom } from './containers';
 class App extends Component {
 
@@ -19,7 +19,7 @@ class App extends Component {
           <Route path='/MaterialUI' component={MaterialUI} />
           <Route path='/ReactInfinite' component={ReactInfinite} />
           <Route path='/JSON' component={Main} />
-          <Route path='/Pose' component={Pose} />
+          <Route path='/Map' component={Map} />
           <Route path='/EmailSend' component={EmailSendFom} />
         </div>
       </Router>

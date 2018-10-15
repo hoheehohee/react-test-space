@@ -77,7 +77,7 @@ class Main extends Component {
               <Paper className={classes.paper}>
                 <List className={classes.list}>
                   <ListItem className={classes.item} button>
-                    Pose
+                    Map
                   </ListItem>
                 </List>
               </Paper>

@@ -2,7 +2,7 @@ import Main from './Main';
 import FormsyReact from './FormsyReact';
 import MaterialUI from './MaterialUI';
 import ReactInfinite from './ReactInfinite';
-import Pose from './Pose';
+import Map from './Map';
 import EmailSendFom from './EmailSendFom';
 
 export {
@@ -10,6 +10,6 @@ export {
   FormsyReact,
   MaterialUI,
   ReactInfinite,
-  Pose,
+  Map,
   EmailSendFom
 }
