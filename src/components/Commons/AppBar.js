@@ -3,7 +3,6 @@ import {
   withStyles,
   AppBar as MuAppBar,
   Toolbar,
-  Typography,
   Button,
   IconButton
 } from '@material-ui/core';
@@ -28,9 +27,9 @@ const AppBar = ({classes}) => {
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             {/* <MenuIcon /> */}
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
+          <h2 variant="title" color="inherit" className={classes.flex}>
           Title
-          </Typography>
+          </h2>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </MuAppBar>

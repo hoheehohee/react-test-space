@@ -6,7 +6,7 @@ import AppBar from './Commons/AppBar';
 import DaumMapForm from './DaumMap/DaumMapForm';
 import SortableComponent from './Sortable/SortableComponent';
 import SortableItem from './Sortable/SortableItem';
-import Single from './Pose/Single';
+import * as Map from './Map';
 
 export {
   MyInput,
@@ -17,5 +17,5 @@ export {
 	DaumMapForm,
 	SortableComponent,
 	SortableItem,
-	Single
+	Map
 }
