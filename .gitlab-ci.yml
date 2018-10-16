@@ -52,7 +52,7 @@ deployToServer:
   - chmod 600 ~/.ssh/id_rsa
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n"'
   - echo $sshInfo
-  - scp -r ./build  -o StrictHostKeyChecking=no $sshInfo:/home/www_hohee/project/react-test-space
+  - scp -o StrictHostKeyChecking=no -r ./build $sshInfo:/home/www_hohee/project/react-test-space
   # - ssh -o StrictHostKeyChecking=no $sshInfo 'docker login -u gitlab-ci-token -p '$CI_JOB_TOKEN' registry.gitlab.com'
   # - ssh -o StrictHostKeyChecking=no $sshInfo 'docker pull '$DOKCER_IMAGE_URL
   # - ssh -o StrictHostKeyChecking=no $sshInfo 'docker-compose up -d'
