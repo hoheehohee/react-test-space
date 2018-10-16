@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { AppBar } from '../components';
 import { NaverMap, SearchBox, StoreList } from '../components/Map';
-import { withStyles, Grid, Paper, Icon } from '@material-ui/core';
-// import { } from 'material-design-icons';
+import { withStyles, Grid, Paper } from '@material-ui/core';
+import { Store } from '@material-ui/icons';
 class Map extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,6 @@ class Map extends Component {
 
   componentDidMount() {
     const { naver } = window;
-    const { classes } = this.props;
     var mapDiv = document.getElementById('map');
     let map = new naver.maps.Map(mapDiv, {
       bounds: naver.maps.LatLngBounds.bounds(
@@ -42,10 +41,10 @@ class Map extends Component {
   homeIcon = () => {
     const { classes } = this.props;
     return (
-      <Icon className={'fa fa-plus-circle'} />
-      // <SvgIcon className={classes.homeIcon}>
-      //   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      // </SvgIcon>
+      <div>
+        <p className={classes.storeP}>가맹점</p>
+        <Store className={classes.storeIcon} />
+      </div>
     );
   }
 
@@ -83,9 +82,16 @@ const styles = theme => ({
     border: '2px solid #ededef',
     borderRadius: 0
   },
-  homeIcon: {
-    width: '2rem',
-    height: '2rem'
+  storeIcon: {
+    width: '2.5rem',
+    height: '2.5rem',
+    color: '#1D32B5'
+  },
+  storeP: {
+    padding: 0,
+    margin: 0,
+    fontWeight: 'bold',
+    color: '#1D32B5'
   }
 });
 
