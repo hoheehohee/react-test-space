@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 import { withStyles, Grid, Paper, TextField, FormControlLabel, Checkbox, Button } from '@material-ui/core';
 
+@inject(({ mapStore }) => ({
+  setCompanyInfo: mapStore.setCompanyInfo
+}))
+@observer
 class SearchBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      address: null
-    };
+  @observable address = null;
+
+  addressSearch = () => {
+    const { naver } = window;
+    naver.maps.Service.geocode({address: this.address}, (status, response) => {
+      if(status !== naver.maps.Service.Status.OK) {
+        console.log('#### map service Error');
+        return;
+      }
+      console.log('###: ', response.result);
+      console.log('##### this: ', this)
+      this.props.setCompanyInfo(response.result.items[0]);
+    })
   }
 
-  handleChange = (e, targe) => {
-    this.setState({
-      [targe]: e.target.value
-    });
+  @action
+  handleChange = (e, target) => {
+    this[target] = e.target.value;
   }
 
-  handleAction = () => {
+  handleAction = (e, target) => {
+    if(target === 'address') {
+      this.addressSearch();
+    }
   }
   
   render() {
@@ -33,8 +49,8 @@ class SearchBox extends Component {
                     id="outlined-name"
                     label="주소"
                     className={classes.textField}
-                    value={this.state.address}
                     onChange={(e) => this.handleChange(e, 'address')}
+                    value={this.address}
                     margin="normal"
                     variant="outlined"
                   />
@@ -45,7 +61,7 @@ class SearchBox extends Component {
                 color="primary"
                 disableRipple
                 className={classes.button1}
-                onClick={this.handleAction}
+                onClick={(e) => this.handleAction(e, 'address')}
               >
                 검색
               </Button>

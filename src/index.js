@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux';
+import { Provider } from 'mobx-react'
 import { createMuiTheme, MuiThemeProvider, CssBaseline} from '@material-ui/core';
 import registerServiceWorker from './registerServiceWorker';
 import App from './App';
+import RootStore from './stores';
 
 const theme = createMuiTheme({
   typography: {
@@ -11,12 +13,16 @@ const theme = createMuiTheme({
   },
 });
 
+const root = new RootStore();
+
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <CssBaseline>
-      <App />
-    </CssBaseline>
-  </MuiThemeProvider>,
+  <Provider {...root}>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline>
+        <App />
+      </CssBaseline>
+    </MuiThemeProvider>
+  </Provider>,
   document.getElementById('root')
 );
 registerServiceWorker();
