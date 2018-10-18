@@ -16,7 +16,6 @@ class SearchBox extends Component {
   }
 
   handleAction = () => {
-    const { address } = this.state;
   }
   
   render() {

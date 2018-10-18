@@ -4,8 +4,7 @@ import { AppBar } from '../components';
 import { NaverMap, SearchBox, StoreList } from '../components/Map';
 import { withStyles, Grid, Paper } from '@material-ui/core';
 import { Store } from '@material-ui/icons';
-
-import { observable, action } from 'mobx';
+import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 
 @observer
