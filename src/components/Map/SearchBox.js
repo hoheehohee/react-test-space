@@ -4,8 +4,21 @@ import { withStyles, Grid, Paper, TextField, FormControlLabel, Checkbox, Button 
 class SearchBox extends Component {
   constructor(props) {
     super(props);
-    this.state = {  };
+    this.state = {
+      address: null
+    };
   }
+
+  handleChange = (e, targe) => {
+    this.setState({
+      [targe]: e.target.value
+    });
+  }
+
+  handleAction = () => {
+    const { address } = this.state;
+  }
+  
   render() {
     const { classes } = this.props;
     return (
@@ -14,20 +27,29 @@ class SearchBox extends Component {
           <Paper className={classes.root} >
             <form className={classes.container} noValidate autoComplete="off">
               <FormControlLabel 
-                label={'제휴점'}
+                label={'고객사'}
                 labelPlacement={'start'}
                 control={
                   <TextField
                     id="outlined-name"
                     label="주소"
                     className={classes.textField}
-                    // value={this.state.name}
-                    // onChange={this.handleChange('name')}
+                    value={this.state.address}
+                    onChange={(e) => this.handleChange(e, 'address')}
                     margin="normal"
                     variant="outlined"
                   />
                 }
               />
+              <Button
+                variant="contained"
+                color="primary"
+                disableRipple
+                className={classes.button1}
+                onClick={this.handleAction}
+              >
+                검색
+              </Button>
               <FormControlLabel
                 className={classes.checkboxLabel}
                 control={

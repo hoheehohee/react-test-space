@@ -4,7 +4,13 @@ import { AppBar } from '../components';
 import { NaverMap, SearchBox, StoreList } from '../components/Map';
 import { withStyles, Grid, Paper } from '@material-ui/core';
 import { Store } from '@material-ui/icons';
+
+import { observable, action } from 'mobx';
+import { observer } from 'mobx-react';
+
+@observer
 class Map extends Component {
+  @observable number = 0;
   constructor(props) {
     super(props);
     this.state = { };
