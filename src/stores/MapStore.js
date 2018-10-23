@@ -3,7 +3,8 @@ import { observable, action } from 'mobx';
 export default class MapStore {
   @observable companyInfo = {
     address: 'test',
-    point: { x: 37.3585229, y: 127.1010728}
+    point: { x: 37.3585229, y: 127.1010728},
+    icon: null
   };
   @observable storeInfo = {};
 
@@ -13,10 +14,11 @@ export default class MapStore {
 
   @action
   setCompanyInfo = (info) => {
-    const { address, point } = info;
+    const { address, point, icon } = info;
     this.companyInfo = {
       address,
-      point
+      point,
+      icon
     };
   };
 

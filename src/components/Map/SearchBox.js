@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observable, action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { withStyles, Grid, Paper, TextField, FormControlLabel, Checkbox, Button } from '@material-ui/core';
+import { Business } from '@material-ui/icons';
 
 @inject(({ mapStore }) => ({
   setCompanyInfo: mapStore.setCompanyInfo
@@ -17,9 +18,16 @@ class SearchBox extends Component {
         console.log('#### map service Error');
         return;
       }
-      console.log('###: ', response.result);
-      console.log('##### this: ', this)
-      this.props.setCompanyInfo(response.result.items[0]);
+      const result = response.result.items[0];
+      const { classes } = this.props;
+      result.icon = (
+        <div>
+          <p className={classes.storeP}>고객사</p>
+          <Business className={classes.storeIcon} />
+        </div>
+      )
+      console.log('##### result: ', result)
+      this.props.setCompanyInfo(result);
     })
   }
 
@@ -163,6 +171,17 @@ const styles = theme => ({
     fontSize: 16,
     background: '#19A333',
     '&:hover': { background: '#1DB53A' }
+  },
+  storeIcon: {
+    width: '2.5rem',
+    height: '2.5rem',
+    color: '#1D32B5'
+  },
+  storeP: {
+    padding: 0,
+    margin: 0,
+    fontWeight: 'bold',
+    color: '#1D32B5'
   }
 });
 

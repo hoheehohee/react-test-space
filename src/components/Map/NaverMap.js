@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core';
-import { Store } from '@material-ui/icons';
+import { Business, Store } from '@material-ui/icons';
+const storegp = require('../../lib/storegp');
+
 @inject(({mapStore}) => ({
   companyAddress: mapStore.companyInfo.address,
-  companyPoint: mapStore.companyInfo.point
+  companyPoint: mapStore.companyInfo.point,
+  companyIcon: mapStore.companyInfo.icon
 }))
 @observer
 class NaverMap extends Component {
@@ -22,26 +25,61 @@ class NaverMap extends Component {
     // this.mapBasic();
     return null;
   };
+
+  storePoint = () => {
+    const { naver } = window;
+    const { content } = storegp;
+    const bounds = this.map.getBounds();
+    const southWest = bounds.getSW();
+    const northEast = bounds.getNE();
+    const lngSpan = northEast.lng() - southWest.lng();
+    const latSpan = northEast.lat() - southWest.lat();
+    content.forEach((item, idx) => {
+      const position = new naver.maps.LatLng(item.gpslat, item.gpslon);
+      // const marker = new naver.maps.Marker({
+      //   map: this.map,
+      //   position,
+      //   title: `store-${idx}`,
+      //   icon: {
+      //     content: [
+      //       `<div id=${id}></div>`
+      //     ].join(''),
+      //     size: new naver.maps.Size(38, 58),
+      //     anchor: new naver.maps.Point(19, 58),
+      //   }
+      // });
+      
+    })
+  }
   mapBasic = () => {
     const { naver } = window;
+    const { classes } = this.props;
     const { x, y } = this.props.companyPoint;
     const mapDiv = document.getElementById('map');
     this.map = new naver.maps.Map(mapDiv, {
       center: naver.maps.LatLng(x, y),
       zoom: 10
     });
-    this.pointsMark();
+
+    const homeIcon = (
+      <div>
+        <p className={classes.storeP}>고객사</p>
+        <Business className={classes.storeIcon} />
+      </div>
+    );
+
+    this.pointsMark(new naver.maps.LatLng(37.3613962, 127.1112487), 'homeicon', homeIcon);
   }
 
-  pointsMark = () => {
+  pointsMark = (position, id, icon) => {
     const { naver } = window;
     new naver.maps.Marker({
-      position: new naver.maps.LatLng(37.3613962, 127.1112487),
+      position: position,
       map: this.map,
       title: 'Green',
       icon: {
         content: [
-          '<div id="homeicon"></div>'
+          `<div id=${id}></div>`
         ].join(''),
         size: new naver.maps.Size(38, 58),
         anchor: new naver.maps.Point(19, 58),
@@ -49,41 +87,38 @@ class NaverMap extends Component {
       draggable: true
     });
 
-    const icon = this.homeIcon();
-    ReactDOM.render(icon, document.getElementById('homeicon'))
+    ReactDOM.render(icon, document.getElementById(id))
   }
 
+  // 해당 주소로 지도 이동
   pointMover = () => {
-    const { x, y } = this.props.companyPoint;
+    const { companyPoint, companyIcon } = this.props;
+    const { x, y } = companyPoint;
+    const icon = companyIcon;
     const { naver } = window;
-    const mapDiv = document.getElementById('map');
-    const map = this.map;
     const addr = new naver.maps.Point(x, y);
-    map.setCenter(addr);
-    var marker = new naver.maps.Marker({
-      position: addr,
-      map: map
-    });
-  }
-  
-
-  componentDidMount() {
-    this.mapBasic();
-    
+    this.map.setCenter(addr);
+    this.pointsMark(addr, 'business', icon);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    this.pointMover();
-  }
-
-  homeIcon = () => {
+  storeIcon = (idx) => {
     const { classes } = this.props;
     return (
       <div>
-        <p className={classes.storeP}>가맹점</p>
+        <p className={classes.storeP}>{idx}</p>
         <Store className={classes.storeIcon} />
       </div>
-    );
+    )
+  }
+
+  componentDidMount() {
+    // 지도앱 로딩
+    this.mapBasic(); 
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // 지도 이동
+    this.pointMover();
   }
 
   render() {
