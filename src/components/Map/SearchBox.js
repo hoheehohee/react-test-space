@@ -5,7 +5,8 @@ import { withStyles, Grid, Paper, TextField, FormControlLabel, Checkbox, Button 
 import { Business } from '@material-ui/icons';
 
 @inject(({ mapStore }) => ({
-  setCompanyInfo: mapStore.setCompanyInfo
+  setCompanyInfo: mapStore.setCompanyInfo,
+  setIsMapFix: mapStore.setIsMapFix
 }))
 @observer
 class SearchBox extends Component {
@@ -26,7 +27,6 @@ class SearchBox extends Component {
           <Business className={classes.storeIcon} />
         </div>
       )
-      console.log('##### result: ', result)
       this.props.setCompanyInfo(result);
     })
   }
@@ -34,6 +34,9 @@ class SearchBox extends Component {
   @action
   handleChange = (e, target) => {
     this[target] = e.target.value;
+  }
+  handleChecked = (e) => {
+    this.props.setIsMapFix();
   }
 
   handleAction = (e, target) => {
@@ -43,6 +46,7 @@ class SearchBox extends Component {
   }
   
   render() {
+    console.log('##### SearchBox render: ')
     const { classes } = this.props;
     return (
       <Grid container spacing={24}>
@@ -78,8 +82,8 @@ class SearchBox extends Component {
                 control={
                   <Checkbox
                     className={classes.checkboxField}
-                    // checked={this.state.checkedB}
-                    // onChange={this.handleChange('checkedB')}
+                    // checked={this.state.checkedB}  
+                    onChange={this.handleChecked}
                     value="checkedB"
                     color="primary"
                   />

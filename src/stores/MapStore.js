@@ -7,6 +7,7 @@ export default class MapStore {
     icon: null
   };
   @observable storeInfo = {};
+  @observable isMapFix = false;
 
   constructor(root) {
     this.root = root;
@@ -26,5 +27,10 @@ export default class MapStore {
   setStoreInfo = (info) => {
     this.storeInfo = info;
   };
+
+  @action
+  setIsMapFix = () => {
+    this.isMapFix = !this.isMapFix;
+  }
 
 };

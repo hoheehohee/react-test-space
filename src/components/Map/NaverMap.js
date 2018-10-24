@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core';
-import { Business, Store } from '@material-ui/icons';
+import { Business } from '@material-ui/icons';
 const storegp = require('../../lib/storegp');
 
 @inject(({mapStore}) => ({
   companyAddress: mapStore.companyInfo.address,
   companyPoint: mapStore.companyInfo.point,
-  companyIcon: mapStore.companyInfo.icon
+  companyIcon: mapStore.companyInfo.icon,
+  isMapFix: mapStore.isMapFix
 }))
 @observer
 class NaverMap extends Component {
@@ -17,40 +18,16 @@ class NaverMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisible: false
+      isVisible: false,
+      isMapFix: true
     };
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    // this.mapBasic();
+  static getDerivedStateFromProps(prevProps, prevState) {
     return null;
   };
 
-  storePoint = () => {
-    const { naver } = window;
-    const { content } = storegp;
-    const bounds = this.map.getBounds();
-    const southWest = bounds.getSW();
-    const northEast = bounds.getNE();
-    const lngSpan = northEast.lng() - southWest.lng();
-    const latSpan = northEast.lat() - southWest.lat();
-    content.forEach((item, idx) => {
-      const position = new naver.maps.LatLng(item.gpslat, item.gpslon);
-      // const marker = new naver.maps.Marker({
-      //   map: this.map,
-      //   position,
-      //   title: `store-${idx}`,
-      //   icon: {
-      //     content: [
-      //       `<div id=${id}></div>`
-      //     ].join(''),
-      //     size: new naver.maps.Size(38, 58),
-      //     anchor: new naver.maps.Point(19, 58),
-      //   }
-      // });
-      
-    })
-  }
+  //초기 map Setting
   mapBasic = () => {
     const { naver } = window;
     const { classes } = this.props;
@@ -58,7 +35,13 @@ class NaverMap extends Component {
     const mapDiv = document.getElementById('map');
     this.map = new naver.maps.Map(mapDiv, {
       center: naver.maps.LatLng(x, y),
-      zoom: 10
+      zoom: 10,   // 지도의 초기 줌 레벨
+      minZoom: 10,  // 지도의 최소 줌 레벨
+      maxZoom: 14,  // 지도의 최대 줌 레벨
+      zoomControl: true, // 줌 컨트롤의 표시 여부
+      zoomControlOptions: { //줌 컨트롤의 옵션
+        position: naver.maps.Position.TOP_RIGHT
+      }
     });
 
     const homeIcon = (
@@ -71,6 +54,63 @@ class NaverMap extends Component {
     this.pointsMark(new naver.maps.LatLng(37.3613962, 127.1112487), 'homeicon', homeIcon);
   }
 
+  //모든 stroe 마크 표시
+  storePoint = () => {
+    const { naver } = window;
+    const { content } = storegp;
+    // const { classes } = this.props;
+    const markers = [];
+    content.forEach((item, idx) => {
+      const position = new naver.maps.LatLng(item.gpslat, item.gpslon);
+      const marker = new naver.maps.Marker({
+        map: this.map,
+        position,
+        title: `store-${idx}`,
+        // icon: {
+        //   content: [
+        //     `<div>
+        //       <p className=${classes.storeP}>${idx}</p>
+        //       <Store className=${classes.storeIcon} />
+        //      </div>`
+        //   ].join(''),
+        //   size: new naver.maps.Size(38, 58),
+        //   anchor: new naver.maps.Point(19, 58),
+        // }
+      });
+      markers.push(marker);
+    });
+    // map 이벤트 리스너
+    naver.maps.Event.addListener(this.map, 'idle', () => {
+      this.updateMarkers(this.map, markers);
+    });
+  }
+
+  updateMarkers = (map, markers) => {
+    const mapBounds = map.getBounds();
+    let marker;
+    let position;
+    markers.forEach((item) => {
+      marker = item
+      position = marker.getPosition();
+
+      if (mapBounds.hasLatLng(position)) {
+        this.showMarker(map, marker);
+      } else {
+        this.hideMarker(map, marker);
+      }
+    })
+  }
+
+  showMarker = (map, marker) => {
+    if (marker.getMap()) return;
+    marker.setMap(map);
+  }
+  hideMarker = (map, marker) => {
+    if (!marker.getMap()) return;
+    marker.setMap(null);
+  }
+
+  //마커 표시
   pointsMark = (position, id, icon) => {
     const { naver } = window;
     new naver.maps.Marker({
@@ -83,8 +123,7 @@ class NaverMap extends Component {
         ].join(''),
         size: new naver.maps.Size(38, 58),
         anchor: new naver.maps.Point(19, 58),
-      },
-      draggable: true
+      }
     });
 
     ReactDOM.render(icon, document.getElementById(id))
@@ -101,24 +140,24 @@ class NaverMap extends Component {
     this.pointsMark(addr, 'business', icon);
   }
 
-  storeIcon = (idx) => {
-    const { classes } = this.props;
-    return (
-      <div>
-        <p className={classes.storeP}>{idx}</p>
-        <Store className={classes.storeIcon} />
-      </div>
-    )
-  }
-
   componentDidMount() {
     // 지도앱 로딩
     this.mapBasic(); 
+    this.storePoint();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // 지도 이동
-    this.pointMover();
+    const { isMapFix } = this.props;
+    console.log('##### isMapFix: ', isMapFix);
+    console.log('##### prevProps.isMapFix: ', prevProps.isMapFix)
+    if (prevProps.isMapFix !== isMapFix) {
+      this.map.setOptions({
+        draggable: prevProps.isMapFix
+      })
+    }else{
+      this.pointMover();
+    }
+    
   }
 
   render() {
