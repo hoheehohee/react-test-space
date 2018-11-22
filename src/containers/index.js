@@ -4,6 +4,7 @@ import MaterialUI from './MaterialUI';
 import ReactInfinite from './ReactInfinite';
 import Map from './Map';
 import EmailSendFom from './EmailSendFom';
+import Mobx from './Mobx';
 
 export {
   Main,
@@ -11,5 +12,6 @@ export {
   MaterialUI,
   ReactInfinite,
   Map,
-  EmailSendFom
+  EmailSendFom,
+  Mobx
 }

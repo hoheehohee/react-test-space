@@ -7,7 +7,8 @@ import {
   MaterialUI,
   ReactInfinite,
   Map,
-  EmailSendFom } from './containers';
+  EmailSendFom,
+  Mobx } from './containers';
 class App extends Component {
   
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path='/JSON' component={Main} />
           <Route path='/Map' component={Map} />
           <Route path='/EmailSend' component={EmailSendFom} />
+          <Route path='/Mobx' component={Mobx} />
         </div>
       </Router>
     );

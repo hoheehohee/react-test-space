@@ -91,6 +91,15 @@ class Main extends Component {
                 </List>
               </Paper>
             </Link>
+            <Link to='/Mobx'>
+              <Paper className={classes.paper}>
+                <List className={classes.list}>
+                  <ListItem className={classes.item} button>
+                    Mobx
+                  </ListItem>
+                </List>
+              </Paper>
+            </Link>
           </Grid>
         </Grid>
       </div>
