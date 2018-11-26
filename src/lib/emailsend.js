@@ -8,14 +8,14 @@ exports.emailsend = () => {
     secure: false,
     service: 'gmail',
     auth: {
-      user: 'yongho@vendys.co.kr',
-      pass: 'vendyshohee0816'
+      user: '',
+      pass: ''
     }
   });
 
   let mailOptions = {
-    from: '"Fred Foo 👻" <www.hohee@gmail.com>', // sender address
-    to: 'bar@example.com, yongho@vendys.co.kr', // list of receivers
+    from: '"Fred Foo 👻" ', // sender address
+    to: 'bar@example.com,', // list of receivers
     subject: 'Hello ✔', // Subject line
     text: 'Hello world?', // plain text body
     html: '<b>Hello world?</b>' // html body

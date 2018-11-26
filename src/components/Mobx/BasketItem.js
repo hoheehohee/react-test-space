@@ -2,11 +2,11 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import { withStyles } from '@material-ui/core';
 
-const BasketItem = ({classes, name, price, count, onTake}) => (
-  <div className={classes.basketItem} onClick={() => onTake(name)}>
-    <div className={classes.name}>{name}</div>
-    <div className={classes.price}>{price}원</div>
-    <div className={classes.count}>{count}</div>
+const BasketItem = ({classes, item, onTake}) => (
+  <div className={classes.basketItem} onClick={() => onTake(item.name)}>
+    <div className={classes.name}>{item.name}</div>
+    <div className={classes.price}>{item.price}원</div>
+    <div className={classes.count}>{item.count}</div>
     <div className={classes.return}>갖다놓기</div>
   </div>
 );
