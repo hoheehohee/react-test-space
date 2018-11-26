@@ -73,11 +73,19 @@ class Main extends Component {
                 </List>
               </Paper>
             </Link>
+<<<<<<< HEAD
             <Link to='/Pose'>
               <Paper className={classes.paper}>
                 <List className={classes.list}>
                   <ListItem className={classes.item} button>
                     Pose
+=======
+            <Link to='/Map'>
+              <Paper className={classes.paper}>
+                <List className={classes.list}>
+                  <ListItem className={classes.item} button>
+                    Map
+>>>>>>> c604acce62cba7906b4c6f12f5b6211055cfa240
                   </ListItem>
                 </List>
               </Paper>
@@ -91,6 +99,18 @@ class Main extends Component {
                 </List>
               </Paper>
             </Link>
+<<<<<<< HEAD
+=======
+            <Link to='/Mobx'>
+              <Paper className={classes.paper}>
+                <List className={classes.list}>
+                  <ListItem className={classes.item} button>
+                    Mobx
+                  </ListItem>
+                </List>
+              </Paper>
+            </Link>
+>>>>>>> c604acce62cba7906b4c6f12f5b6211055cfa240
           </Grid>
         </Grid>
       </div>

@@ -32,7 +32,15 @@ class MaterialUI extends Component {
 
 
   render() {
+<<<<<<< HEAD
     const theme = createMuiTheme();
+=======
+    const theme = createMuiTheme({
+      typography: {
+        useNextVariants: true,
+      },
+    });
+>>>>>>> c604acce62cba7906b4c6f12f5b6211055cfa240
 
     return (
       //<SampleProvider>

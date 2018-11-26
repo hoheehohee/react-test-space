@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 { 
+=======
+{
+>>>>>>> c604acce62cba7906b4c6f12f5b6211055cfa240
   "extends": [
     // "eslint-config-airbnb",
     "react-app"

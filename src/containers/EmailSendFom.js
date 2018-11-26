@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // const emailsend = require('../lib/emailsend');
 
+=======
+>>>>>>> c604acce62cba7906b4c6f12f5b6211055cfa240
 import React, { Component } from 'react';
 import {
   Button
