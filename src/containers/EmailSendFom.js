@@ -10,7 +10,7 @@ class EmailSendFom extends Component {
 
   send = () => {
     console.log('##### send: ')
-    emailsend.send();
+    // emailsend.send();
   }
   render() {
     return (
