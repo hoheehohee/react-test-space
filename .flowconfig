@@ -1,7 +1,0 @@
-.*/__tests__/.*
-.*/src/\(foo\|bar\)/.*
-<<<<<<< HEAD
-.*\.ignore\.js
-=======
-.*\.ignore\.jsa
->>>>>>> c604acce62cba7906b4c6f12f5b6211055cfa240
