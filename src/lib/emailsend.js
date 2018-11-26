@@ -9,7 +9,7 @@ exports.emailsend = () => {
     service: 'gmail',
     auth: {
       user: 'yongho@vendys.co.kr',
-      pass: 'vendyshohee0816'
+      pass: ''
     }
   });
 
