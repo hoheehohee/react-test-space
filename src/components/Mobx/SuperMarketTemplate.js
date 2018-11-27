@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core';
  * 한쪽에는 상품, 한쪽에는 장바구니를 props로 받아와서 보여준다.
  */
 
-const SuperMarketTemplate = ({classes, items, basket}) => {
+const SuperMarketTemplate = ({classes, items, basket, total}) => {
   return (
     <div className={classes.superMarketTemplate}>
       <div className={classes.items_wrapper}>
@@ -15,6 +15,7 @@ const SuperMarketTemplate = ({classes, items, basket}) => {
       <div className={classes.basket_wrapper}>
         <h2>장바구니</h2>
         {basket}
+        {total}
       </div>
     </div>
   );
